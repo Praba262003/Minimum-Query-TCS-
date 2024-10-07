@@ -1,0 +1,35 @@
+def find_minimum_swaps(arr):
+    """
+    Finds the minimum number of swaps required to make the given array beautiful.
+
+    A beautiful array is an array where all elements are either in ascending or descending order.
+
+    Args:
+        arr: The input array.
+
+    Returns:
+        The minimum number of swaps required.
+    """
+
+    n = len(arr)
+    swaps = 0
+    ascending = True
+
+    for i in range(1, n):
+        if arr[i] < arr[i - 1]:
+            if ascending:
+                ascending = False
+                swaps += 1
+        elif arr[i] > arr[i - 1]:
+            if not ascending:
+                ascending = True
+                swaps += 1
+
+    return swaps
+
+if __name__ == "__main__":
+    n = int(input())
+    arr = list(map(int, input().split()))
+
+    result = find_minimum_swaps(arr)
+    print(result)
